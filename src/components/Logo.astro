@@ -1,0 +1,19 @@
+---
+interface Props {
+	width: string;
+	height: string;
+}
+
+const { width, height } = Astro.props;
+---
+<div class="logo">
+  <img src="/www.ngitingaso.com/logo.svg"
+    alt="A vector art of one white and black shih-tzu smiling with evil plan"
+    width={width} height={height} />
+</div>
+
+<style>
+  .logo {
+    text-align: center;
+  }
+</style>
