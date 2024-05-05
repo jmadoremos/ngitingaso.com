@@ -21,3 +21,11 @@ if [ ! -d "node_modules" ]; then
 else
     echo ${ECHO_INFO}: The 'node_modules' folder exists. Skipped clean install.
 fi
+
+##########################################
+# Disable telemetry
+##########################################
+
+# Disable astro telemetry
+# See https://astro.build/telemetry
+npm run astro telemetry disable
