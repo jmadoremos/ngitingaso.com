@@ -1,0 +1,39 @@
+name: Update NPM packages
+
+on:
+  # Allows you to run this workflow manually from the Actions tab on GitHub.
+  workflow_dispatch:
+  # Run daily
+  schedule:
+    - cron:  "0 0 * * 0"
+
+# Allow this job to clone the repo and create a page deployment
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  update-npm-packages:
+    name: Update NPM packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v4
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: '20.x' # TODO: Update with Node version upgrades
+      - name: Update NPM packages
+        run: npm update --save
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6.0.5
+        with:
+          # The title of the pull request.
+          # optional, default is Changes by create-pull-request action
+          title: 'Dependabot: Update NPM packages (automated)'
+          # The pull request branch name.
+          # optional, default is create-pull-request/patch
+          branch: 'dependabot-update-npm-packages'
+          # The message to use when committing changes.
+          # optional, default is [create-pull-request] automated change
+          commit-message: 'Update npm packages to latest minor version'
