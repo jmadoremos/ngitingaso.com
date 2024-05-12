@@ -13,8 +13,8 @@
     "node": "^20"
   },
   "dependencies": {
-    "astro": "^4.7.1",
     "@astrojs/check": "^0.5.10",
+    "astro": "^4.8.2",
     "typescript": "^5.4.5"
   }
 }
